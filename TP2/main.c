@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <time.h>
 
+/*Trouver et programmer la stratégie pour que l’ordinateur gagne tout le temps, argumenter votre choix*/
+
 #define NB_LIGNES 4
 
 void initialiser_plateau_a_zero(int plateau[]){
@@ -14,6 +16,7 @@ void initialiser_plateau_a_zero(int plateau[]){
 void afficher_etat(int plateau[]){
   printf("\n\n");
   for(int i = 0; i<NB_LIGNES; i++){
+    printf("%d  ", i);
     if (plateau[i] !=0){
       for(int j = 0; j < plateau[i]; j++){
        printf("| ");
@@ -95,35 +98,9 @@ void simulation_partie(int plateau[], int nb_allum){
 }
 
 bool est_tour_joueur_humain(int tour){
-  return (tours % 2 == 0);
+  return (tour % 2 == 0);
 }
 
-void jouer_partie(int plateau[], int nb_allum){
-  int tours = -1;
-  int choix_ligne=NULL;
-  int choix_nb_allum=NULL;
-  int ligne=NULL;
-
-  generer_etat(plateau, nb_allum);
-
-  printf("\nDébut de partie\n");
-  afficher_etat(plateau);
-
-  while(!est_un_etat_final(plateau)){
-
-    if(est_tour_joueur_humain(++tour)){
-      
-      choix_ligne = lire_ligne(plateau);
-      choix_nb_allum = lire_nb_allum(plateau, choix_ligne);
-    }
-    else{
-      choix_ligne = choix_aleatoire_ligne(plateau);
-      choix_nb_allum=choix_aleatoire_nb_allum(plateau, ligne);
-    }
-    appliquer(plateau, choix_ligne, choix_nb_allum);
-    afficher_etat(plateau);
-  }
-  
 void vider_buffer()
 {
     int c = 0;
@@ -136,15 +113,16 @@ void vider_buffer()
 int lire_ligne(int plateau[])
 {
     int c = 0;
-    
+
     do
     {
       printf("\n\nChoisissez une ligne : ");
-        c = getchar();
+      scanf("%d", &c);
+        //c = getchar();
         if(c < 0 || c > NB_LIGNES || plateau[c] < 1)
-          printf("\nLa ligne que vous avez choisi n'est pas valide\n")
+          printf("\nLa ligne que vous avez choisi n'est pas valide\n");
     }while (c < 0 || c > NB_LIGNES || plateau[c] < 1);
-    return c
+    return c;
 }
 
 int lire_nb_allum(int plateau[], int ligne)
@@ -153,12 +131,42 @@ int lire_nb_allum(int plateau[], int ligne)
     do
     {
       printf("\n\nChoisissez un nombre d’allumette : ");
-        c = getchar();
+      scanf("%d", &c);
+        //c = getchar();
         if(c <= 0 || c > plateau[ligne])
-          printf("\nLe nombre d'allumettes que vous avez choisi n'est pas valide\n")
+          printf("\nLe nombre d'allumettes que vous avez choisi n'est pas valide\n");
     }while (c <= 0 || c > plateau[ligne]);
-    return c
+    return c;
 }
+
+void jouer_partie(int plateau[], int nb_allum){
+  int tour = -1;
+  int choix_ligne=NULL;
+  int choix_nb_allum=NULL;
+  int ligne=NULL;
+
+  generer_etat(plateau, nb_allum);
+
+  printf("\nDébut de partie\n");
+  afficher_etat(plateau);
+
+  while(!est_un_etat_final(plateau)){
+
+    if(est_tour_joueur_humain(++tour)){
+      printf("\nC’est au tour du joueur 1\n");
+      choix_ligne = lire_ligne(plateau);
+      choix_nb_allum = lire_nb_allum(plateau, choix_ligne);
+    }
+    else{
+      printf("\nC’est au tour de l’ordinateur\n");
+      choix_ligne = choix_aleatoire_ligne(plateau);
+      choix_nb_allum=choix_aleatoire_nb_allum(plateau, choix_ligne);
+    }
+    appliquer(plateau, choix_ligne, choix_nb_allum);
+    afficher_etat(plateau);
+  }
+
+
 
 
 }
