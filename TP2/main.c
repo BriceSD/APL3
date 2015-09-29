@@ -139,6 +139,17 @@ int lire_nb_allum(int plateau[], int ligne)
     return c;
 }
 
+void jouer_avec_intelligence ()
+{
+/*
+  calculer la difference en base deux entre toutes les lignes;
+  calculer le filtre (plus gros coefficient de la difference);
+  calculer le nombre de lignes filtrees;
+  tirer au hasard une ligne filtree;
+  calculer la valeur a jouer dans cette ligne;
+  */
+}
+
 void jouer_partie(int plateau[], int nb_allum){
   int tour = -1;
   int choix_ligne=NULL;
