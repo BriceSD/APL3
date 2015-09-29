@@ -94,9 +94,12 @@ void simulation_partie(int plateau[], int nb_allum){
   }
 }
 
+bool est_tour_joueur_humain(int tour){
+  return (tours % 2 == 0);
+}
 
 void jouer_partie(int plateau[], int nb_allum){
-  int tours = 0;
+  int tours = -1;
   int choix_ligne=NULL;
   int choix_nb_allum=NULL;
   int ligne=NULL;
@@ -108,23 +111,20 @@ void jouer_partie(int plateau[], int nb_allum){
 
   while(!est_un_etat_final(plateau)){
 
-    if(tours % 2 == 0){
-      printf("\n\nChoisissez une ligne : ");
-      choix_ligne = scanf("%d");
-      printf("\n\nChoisissez un nombre d’allumette : ");
-      choix_nb_allum = scanf("%d");
-
-      appliquer(plateau, choix_ligne, choix_nb_allum);
+    if(est_tour_joueur_humain(++tour)){
+      
+      choix_ligne = lire_ligne(plateau);
+      choix_nb_allum = lire_nb_allum(plateau, choix_ligne);
     }
     else{
-      ligne = choix_aleatoire_ligne(plateau);
-      nb_allum=choix_aleatoire_nb_allum(plateau, ligne);
-      appliquer(plateau, ligne, nb_allum);
+      choix_ligne = choix_aleatoire_ligne(plateau);
+      choix_nb_allum=choix_aleatoire_nb_allum(plateau, ligne);
     }
+    appliquer(plateau, choix_ligne, choix_nb_allum);
     afficher_etat(plateau);
   }
   
-  void viderBuffer()
+void vider_buffer()
 {
     int c = 0;
     while (c != '\n' && c != EOF)
@@ -132,30 +132,34 @@ void jouer_partie(int plateau[], int nb_allum){
         c = getchar();
     }
 }
- 
-int lire(char *chaine, int longueur)
+
+int lire_ligne(int plateau[])
 {
-    char *positionEntree = NULL;
- 
-    if (fgets(chaine, longueur, stdin) != NULL)
+    int c = 0;
+    
+    do
     {
-        positionEntree = strchr(chaine, '\n');
-        if (positionEntree != NULL)
-        {
-            *positionEntree = '\0';
-        }
-        else
-        {
-            viderBuffer();
-        }
-        return 1;
-    }
-    else
-    {
-        viderBuffer();
-        return 0;
-    }
+      printf("\n\nChoisissez une ligne : ");
+        c = getchar();
+        if(c < 0 || c > NB_LIGNES || plateau[c] < 1)
+          printf("\nLa ligne que vous avez choisi n'est pas valide\n")
+    }while (c < 0 || c > NB_LIGNES || plateau[c] < 1);
+    return c
 }
+
+int lire_nb_allum(int plateau[], int ligne)
+{
+    int c = 0;
+    do
+    {
+      printf("\n\nChoisissez un nombre d’allumette : ");
+        c = getchar();
+        if(c <= 0 || c > plateau[ligne])
+          printf("\nLe nombre d'allumettes que vous avez choisi n'est pas valide\n")
+    }while (c <= 0 || c > plateau[ligne]);
+    return c
+}
+
 
 }
 
