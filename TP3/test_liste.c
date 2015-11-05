@@ -78,11 +78,19 @@ void test_repeter_elements_D ()
   printf ("\n") ;
 }
 
-void test_sauf_dernier(){
+void test_sauf_dernier_R(){
   liste L;
   L = liste_test1();
   liste L_test;
-  L_test = sauf_dernier(L);
+  L_test = sauf_dernier_R(L);
+  afficher_liste(L_test);
+}
+
+void test_sauf_dernier_I(){
+  liste L;
+  L = liste_test1();
+  liste L_test;
+  L_test = sauf_dernier_I(L);
   afficher_liste(L_test);
 }
 
@@ -96,6 +104,9 @@ int main ()
   sep () ;
   test_repeter_elements_D () ;
   sep();
-  test_sauf_dernier();
+  test_sauf_dernier_R();
+  sep();
+  test_sauf_dernier_I();
+  sep();
   return EXIT_SUCCESS ;
 }

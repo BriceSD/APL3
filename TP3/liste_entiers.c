@@ -189,11 +189,24 @@ liste inserer_liste_D (unsigned int n, int x, liste L)
 }
 
 
-liste sauf_dernier(liste L){
+liste sauf_dernier_R(liste L){
   if(est_vide(L))
     return L;
   if(est_vide(reste(L)))
     return l_vide();
-  return cons(L->premier, sauf_dernier(reste(L)));
+  return cons(L->premier, sauf_dernier_R(reste(L)));
+}
+
+liste sauf_dernier_I(liste L){
+if(est_vide(L))
+    return L;
+
+  liste L_sauf_dernier = l_vide();
+
+  while(!est_vide(reste(L))){
+    L_sauf_dernier=cons(L->premier, L_sauf_dernier);
+    L = reste(L);
+  }
+  return renverser(L_sauf_dernier);
 }
 
