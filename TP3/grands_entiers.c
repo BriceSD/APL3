@@ -21,4 +21,8 @@ liste entier_vers_grand_entier(int n){
   return cons(n%BASE,entier_vers_grand_entier(n/BASE));
 }
 
- 
+int grand_entier_vers_entier(liste L){
+  if(est_vide(L))
+    return 0;
+  return prem(L)+BASE*(grand_entier_vers_entier(reste(L)));
+}
