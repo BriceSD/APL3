@@ -120,6 +120,13 @@ void test_entier_vers_grand_entier(){
   afficher_grands_entiers(L);
 }
 
+void test_grand_entier_vers_entier(){
+  int i;
+  liste L = liste_test1();
+  i = grand_entier_vers_entier(L);
+  printf("En entier : %d", i);
+}
+
 int main ()
 {
   test_longueur () ;
@@ -141,6 +148,8 @@ int main ()
   test_succ();
   sep();
   test_entier_vers_grand_entier();
+  sep();
+  test_grand_entier_vers_entier();
   sep();
   return EXIT_SUCCESS ;
 }
