@@ -5,7 +5,7 @@
 /* date : 03/11/15      */
 /************************/
 
-#include "liste_entiers.c"
+#include "grands_entiers.c"
 #include <stdlib.h>
 
 void sep ()
@@ -17,6 +17,7 @@ liste liste_test1 ()
 {
   return cons (1, cons (2, cons (3, cons (4, l_vide ())))) ;
 }
+
 
 void test_longueur ()
 {
@@ -94,6 +95,31 @@ void test_sauf_dernier_I(){
   afficher_liste(L_test);
 }
 
+void test_afficher_grands_entiers1(){
+  liste L;
+  L = liste_test1();
+  afficher_grands_entiers(L);
+}
+
+void test_afficher_grands_entiers2(){
+  liste L;
+  L = liste_test1();
+  L = cons(0,cons(0, L));
+  afficher_grands_entiers(L);
+}
+
+void test_succ(){
+  liste L = liste_test1();
+  L = succ(L);
+  afficher_grands_entiers(L);
+}
+
+void test_entier_vers_grand_entier(){
+  liste L ;
+  L = entier_vers_grand_entier(4321);
+  afficher_grands_entiers(L);
+}
+
 int main ()
 {
   test_longueur () ;
@@ -107,6 +133,14 @@ int main ()
   test_sauf_dernier_R();
   sep();
   test_sauf_dernier_I();
+  sep();
+  test_afficher_grands_entiers1();
+  sep();
+  test_afficher_grands_entiers2();
+  sep();
+  test_succ();
+  sep();
+  test_entier_vers_grand_entier();
   sep();
   return EXIT_SUCCESS ;
 }

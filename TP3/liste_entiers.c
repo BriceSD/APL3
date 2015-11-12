@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define BASE 10
+
 typedef struct Liste *liste ;
 
 struct Liste
@@ -209,4 +211,3 @@ if(est_vide(L))
   }
   return renverser(L_sauf_dernier);
 }
-
