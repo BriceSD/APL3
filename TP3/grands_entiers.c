@@ -26,3 +26,13 @@ int grand_entier_vers_entier(liste L){
     return 0;
   return prem(L)+BASE*(grand_entier_vers_entier(reste(L)));
 }
+
+liste somme(liste L1, liste L2){
+  if(est_vide(L1))
+    return L2;
+  if(est_vide(L2))
+    return L1;
+  int r = (prem(A)+prem(B))%BASE;
+  int q = (prem(A)+prem(B))>=BASE;
+  return cons(r,somme((q==0?reste(A):succ(reste(A)),reste(B)));
+}
