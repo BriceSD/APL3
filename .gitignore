@@ -33,5 +33,6 @@
 
 .metadata/
 *.swp
+*.swo
 
 *.zip
