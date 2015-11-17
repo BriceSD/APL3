@@ -32,7 +32,7 @@ liste somme(liste L1, liste L2){
     return L2;
   if(est_vide(L2))
     return L1;
-  int r = (prem(A)+prem(B))%BASE;
-  int q = (prem(A)+prem(B))>=BASE;
-  return cons(r,somme((q==0?reste(A):succ(reste(A)),reste(B)));
+  int r = (prem(L1)+prem(L2))%BASE;
+  int q = (prem(L1)+prem(L2))>=BASE;
+  return cons(r,somme((q==0?reste(L1):succ(reste(L1)),reste(L2))));
 }

@@ -127,6 +127,12 @@ void test_grand_entier_vers_entier(){
   printf("En entier : %d", i);
 }
 
+void test_somme(){
+  liste L1 = liste_test1();
+  liste L2 = liste_test1();
+  liste L3 = somme(L1, L2);
+}
+
 int main ()
 {
   test_longueur () ;
@@ -150,6 +156,8 @@ int main ()
   test_entier_vers_grand_entier();
   sep();
   test_grand_entier_vers_entier();
+  sep();
+  test_somme();
   sep();
   return EXIT_SUCCESS ;
 }
