@@ -131,17 +131,32 @@ void test_somme(){
   liste L1 = liste_test1();
   liste L2 = liste_test1();
   liste L3 = somme(L1, L2);
+  afficher_grands_entiers(L3);
+}
+
+void test_difference(){
+  //liste L1 = cons(5,cons(8,cons(3, cons(9, l_vide()))));
+  //liste L2 = cons(1,cons(6,cons(9, cons(4, l_vide()))));
+  liste L1 = cons(5, cons(2, l_vide()));
+  liste L2 = cons(7, cons(1, l_vide()));
+  printf("\n");
+  afficher_grands_entiers(L1);
+  printf(" - ");
+  afficher_grands_entiers(L2);
+  liste L3 = difference(L1, L2);
+  printf(" = ");
+  afficher_grands_entiers(L3);
 }
 
 int main ()
 {
-  test_longueur () ;
-  sep () ;
-  test_inserer_liste_D () ;
-  sep () ;
-  test_repeter_elements () ;
-  sep () ;
-  test_repeter_elements_D () ;
+  test_longueur();
+  sep();
+  test_inserer_liste_D();
+  sep();
+  test_repeter_elements();
+  sep();
+  test_repeter_elements_D();
   sep();
   test_sauf_dernier_R();
   sep();
@@ -158,6 +173,8 @@ int main ()
   test_grand_entier_vers_entier();
   sep();
   test_somme();
+  sep();
+  test_difference();
   sep();
   return EXIT_SUCCESS ;
 }
