@@ -45,6 +45,15 @@ liste difference(liste L1, liste L2){
   return cons(BASE+prem(L1)-prem(L2), difference(reste(L1), succ(reste(L2))));
 }
 
-//liste multiplication(liste A, liste B){
-//  
-//}
+liste multiplication(liste A, liste B){
+  if(longeur_R(A)<longeur_R(B))
+    return multiplication(B,A);
+
+  if(est_vide(A) || est_vide(B))
+    return cons(0, l_vide());
+
+  if(longeur_R(B)==1)
+    return multiplication(cons(prem*prem(B)%BASE, l_vide()), cons(0, somme(multiplication(reste(A),B), cons(prem(A),prem(B/BASE, l_vide())))));
+
+  somme(multiplication(A, cons(prem(B), l_vide()), cons(0, produit(A, reste(B)))));
+}
