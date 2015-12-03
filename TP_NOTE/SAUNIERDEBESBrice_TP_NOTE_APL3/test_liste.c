@@ -139,6 +139,8 @@ int main (int argc, char** argv)
   sep();
   test_factoriel();
   sep();
+  test_nombre_chiffre_paire();
+  sep();
   liste factoriel_mille = calculer_factoriel_mille();
   sep();
   longueur_factoriel_mille(factoriel_mille);
@@ -154,8 +156,6 @@ int main (int argc, char** argv)
   somme_chiffres_paire_factoriel_mille(factoriel_mille);
   sep();
   somme_chiffres_impaire_factoriel_mille(factoriel_mille);
-  sep();
-  test_nombre_chiffre_paire();
   sep();
 
   return EXIT_SUCCESS ;
