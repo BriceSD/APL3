@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 
+
 void sep ()
 {
   printf ("\n********************\n\n") ;
@@ -27,13 +28,13 @@ void test_longueur ()
   printf ("Longueur de ") ;
   afficher_liste (L) ;
   printf (" = %d (R) = %d (I)\n",
-	  longueurR (L), longueurI (L)) ;
+      longueurR (L), longueurI (L)) ;
 }
 
 void test_inserer_liste_D_param (unsigned int n, int x, liste L)
 {
   printf ("Insertion de %i à la position %u de la liste ",
-	  x, n) ;
+      x, n) ;
   afficher_liste (L) ;
   printf("\nRésultat : ") ;
   L = inserer_liste_D (n, x, L) ;
@@ -46,10 +47,10 @@ void test_inserer_liste_D ()
   unsigned int n ;
   liste L ;
   for (n = 1 ; n <= 6 ; n = n + 1)
-    {
-      L = liste_test1 () ;
-      test_inserer_liste_D_param (n, 10 * n, L) ;
-    }
+  {
+    L = liste_test1 () ;
+    test_inserer_liste_D_param (n, 10 * n, L) ;
+  }
 }
 
 void test_repeter_elements_param (liste L)
@@ -90,16 +91,47 @@ void test_nombre_chiffre_paire(){
   liste L = entier_vers_grand_entier(22121811);
   printf("Nombre de chiffre paire dans la liste : ");
   afficher_grand_entier(L);
-  printf("\nAttendu 4, obtenu : %d\n", nombre_chiffre_paire(L));
+  printf("\nAttendu 4, obtenu : %d\n", nombre_chiffres_paire(L));
 }
 
-void longueur_fact_mille(){
-  liste L = entier_vers_grand_entier(1000);
-  liste resultat_fact_L = ecriture_canonique_grand_entier(factoriel(L));
-  printf ("Longueur de factoriel(1000), soit : ") ;
-  afficher_grand_entier(resultat_fact_L);
+liste calculer_factoriel_mille(){
+  printf("\nCalcul de factoriel 1000, veuillez patienter\n\n");
+  liste factoriel_mille =  ecriture_canonique_grand_entier(factoriel(entier_vers_grand_entier(1000)));
+  printf ("Factoriel(1000) = ") ;
+  afficher_grand_entier(factoriel_mille);
+  return factoriel_mille;
+}
+
+void longueur_factoriel_mille(liste factoriel_mille){
   printf ("\n Longueur = %d (R); %d (I)\n",
-    longueurR(resultat_fact_L), longueurI(resultat_fact_L)) ;
+      longueurR(factoriel_mille), longueurI(factoriel_mille)) ;
+}
+
+void nombre_chiffres_paire_factoriel_mille(liste factoriel_mille){
+  printf ("\nNombre de chiffres paire de factoriel(1000) : %d\n", nombre_chiffres_paire(factoriel_mille)) ;
+}
+
+void nombre_chiffres_impaire_factoriel_mille(liste factoriel_mille){
+  printf ("\nNombre de chiffres impaire de factoriel(1000) : %d\n", nombre_chiffres_impaire(factoriel_mille)) ;
+}
+
+void somme_chiffres_paire_factoriel_mille(liste factoriel_mille){
+  printf ("\nSomme des chiffres paire de factoriel(1000) : %d\n", somme_chiffres_paire(factoriel_mille)) ;
+}
+
+void somme_chiffres_impaire_factoriel_mille(liste factoriel_mille){
+  printf ("\nSomme des chiffres impaire de factoriel(1000) : %d\n", somme_chiffres_impaire(factoriel_mille)) ;
+}
+
+void operations_sur_factoriel_mille(){
+  liste factoriel_mille = calculer_factoriel_mille();
+
+  longueur_factoriel_mille(factoriel_mille);
+  nombre_chiffres_paire_factoriel_mille(factoriel_mille);
+  nombre_chiffres_impaire_factoriel_mille(factoriel_mille);
+  somme_chiffres_paire_factoriel_mille(factoriel_mille);
+  somme_chiffres_impaire_factoriel_mille(factoriel_mille);
+
 }
 
 int main (int argc, char** argv)
@@ -108,17 +140,27 @@ int main (int argc, char** argv)
   sep();
   test_factoriel();
   sep();
-//  printf("Calcul de factoriel 1000, veuillez patienter\n\n");
-//  longueur_fact_mille();
+  liste factoriel_mille_prototype = calculer_factoriel_mille();
+  liste factoriel_mille = grand_entier_clone(factoriel_mille_prototype);
+  sep();
+  nombre_chiffres_paire_factoriel_mille(factoriel_mille);
+  sep();
+  factoriel_mille = grand_entier_clone(factoriel_mille_prototype);
+  longueur_factoriel_mille(factoriel_mille);
+  sep();
+  factoriel_mille = grand_entier_clone(factoriel_mille_prototype);
+  nombre_chiffres_paire_factoriel_mille(factoriel_mille);
+  sep();
+  factoriel_mille = grand_entier_clone(factoriel_mille_prototype);
+  nombre_chiffres_impaire_factoriel_mille(factoriel_mille);
+  sep();
+  factoriel_mille = grand_entier_clone(factoriel_mille_prototype);
+  somme_chiffres_paire_factoriel_mille(factoriel_mille);
+  sep();
+  factoriel_mille = grand_entier_clone(factoriel_mille_prototype);
+  somme_chiffres_impaire_factoriel_mille(factoriel_mille);
   sep();
   test_nombre_chiffre_paire();
-  sep();
-  sep();
-  sep();
-  sep();
-  sep();
-  sep();
-  sep();
   sep();
 
   return EXIT_SUCCESS ;
