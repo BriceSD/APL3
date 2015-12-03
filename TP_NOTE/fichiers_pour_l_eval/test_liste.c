@@ -85,15 +85,41 @@ void test_factoriel(){
   afficher_grand_entier(ecriture_canonique_grand_entier(factoriel(L)));
   printf("\n");
 }
+
+void test_nombre_chiffre_paire(){
+  liste L = entier_vers_grand_entier(22121811);
+  printf("Nombre de chiffre paire dans la liste : ");
+  afficher_grand_entier(L);
+  printf("\nAttendu 4, obtenu : %d\n", nombre_chiffre_paire(L));
+}
+
+void longueur_fact_mille(){
+  liste L = entier_vers_grand_entier(1000);
+  liste resultat_fact_L = ecriture_canonique_grand_entier(factoriel(L));
+  printf ("Longueur de factoriel(1000), soit : ") ;
+  afficher_grand_entier(resultat_fact_L);
+  printf ("\n Longueur = %d (R); %d (I)\n",
+    longueurR(resultat_fact_L), longueurI(resultat_fact_L)) ;
+}
+
 int main (int argc, char** argv)
 {
 
   sep();
   test_factoriel();
-  
+  sep();
+//  printf("Calcul de factoriel 1000, veuillez patienter\n\n");
+//  longueur_fact_mille();
+  sep();
+  test_nombre_chiffre_paire();
+  sep();
+  sep();
+  sep();
+  sep();
+  sep();
+  sep();
+  sep();
+  sep();
+
   return EXIT_SUCCESS ;
 }
-
-  
-
-
