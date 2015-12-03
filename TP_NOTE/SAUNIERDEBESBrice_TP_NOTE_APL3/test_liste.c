@@ -91,7 +91,9 @@ void test_nombre_chiffre_paire(){
   liste L = entier_vers_grand_entier(24132811);
   printf("Nombre de chiffre paire dans la liste : ");
   afficher_grand_entier(L);
-  printf("\nAttendu 4, obtenu : %d\n", nombre_chiffres_paire(L));
+  printf("\nAttendu 4, obtenu : ");
+  afficher_grand_entier(nombre_chiffres_paire(L));
+  printf("\n");
 }
 
 liste calculer_factoriel_mille(){
