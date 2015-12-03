@@ -53,7 +53,7 @@ liste multiplication(liste A, liste B){
     return cons(0, l_vide());
 
   if(longeur_R(B)==1)
-    return multiplication(cons(prem*prem(B)%BASE, l_vide()), cons(0, somme(multiplication(reste(A),B), cons(prem(A),prem(B/BASE, l_vide())))));
+    return multiplication(cons(prem(A)*prem(B)%BASE, l_vide()), cons(0, somme(multiplication(reste(A),B), cons(prem(A),prem(B)/BASE, l_vide()))));
 
   somme(multiplication(A, cons(prem(B), l_vide()), cons(0, produit(A, reste(B)))));
 }
