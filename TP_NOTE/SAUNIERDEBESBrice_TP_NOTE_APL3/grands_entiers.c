@@ -110,20 +110,26 @@ liste factoriel(liste A){ // A - B regarder si A<B
   return produitR(A,factoriel(diff(A,entier_vers_grand_entier(1))));
 }
 
-liste grand_entier_clone(liste grand_entier){
-  return ecriture_canonique_grand_entier(cons(prem(grand_entier), reste(grand_entier)));
+liste longeur_grand_entier(liste A){
+  if(est_vide(A))
+    return l_vide();
+  return succ(longeur_grand_entier(reste(A)));
 }
 
-int nombre_chiffres_paire(liste A){
+liste nombre_chiffres_paire(liste A){
   if(est_vide(A))
-    return 0;
-  return (prem(A)%2==0) + nombre_chiffres_paire(reste(A));
+    return l_vide();
+  if(prem(A)%2==0)
+    return succ(nombre_chiffres_paire(reste(A)));
+  return nombre_chiffres_paire(reste(A));
 }
 
-int nombre_chiffres_impaire(liste A){
+liste nombre_chiffres_impaire(liste A){
   if(est_vide(A))
-    return 0;
-  return (prem(A)%2==1) + nombre_chiffres_paire(reste(A));
+    return l_vide();
+  if(prem(A)%2==1)
+    return succ(nombre_chiffres_impaire(reste(A)));
+  return nombre_chiffres_impaire(reste(A));
 }
 
 liste somme_chiffres_paire(liste A){
@@ -131,8 +137,7 @@ liste somme_chiffres_paire(liste A){
     return l_vide();
   if(prem(A)%2==0)
     return somme(cons(prem(A),l_vide()),somme_chiffres_paire(reste(A)));
-  else
-    return somme_chiffres_paire(reste(A));
+ return somme_chiffres_paire(reste(A));
 }
 
 liste somme_chiffres_impaire(liste A){
@@ -140,6 +145,5 @@ liste somme_chiffres_impaire(liste A){
     return l_vide();
   if(prem(A)%2==1)
     return somme(cons(prem(A),l_vide()),somme_chiffres_impaire(reste(A)));
-  else
-    return somme_chiffres_impaire(reste(A));
+  return somme_chiffres_impaire(reste(A));
 }
