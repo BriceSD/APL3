@@ -151,9 +151,33 @@ void test_ppq(){
 
   liste A4 = l_vide();
   liste B4 = l_vide();
-  printf("Deux listes vides");
+  printf("Deux listes vides\n");
   printf("Test ppq (attendu 0) : %d\n",ppq(A4,B4));
   printf("Test ppq (attendu 0) : %d\n",ppq(B4,A4));
+}
+
+void test_max(){
+  liste A = entier_vers_grand_entier(24132811);
+  liste B = entier_vers_grand_entier(2213);
+  printf("Test max (attendu ");
+  afficher_grand_entier(A);
+  printf(") : ");
+  afficher_grand_entier(max(A,B));
+  printf("\n");
+
+  printf("Test max (attendu ");
+  afficher_grand_entier(A);
+  printf(") : ");
+  afficher_grand_entier(max(B,A));
+  printf("\n");
+
+  liste A2 = entier_vers_grand_entier(24132812);
+  liste B2 = entier_vers_grand_entier(24132812);
+  printf("Test max (attendu ");
+  afficher_grand_entier(A2);
+  printf(") : ");
+  afficher_grand_entier(max(A2,B2));
+  printf("\n");
 }
 
 int main (int argc, char** argv)
@@ -179,6 +203,8 @@ int main (int argc, char** argv)
   */
   sep();
   test_ppq();
+  sep();
+  test_max();
   sep();
 
   return EXIT_SUCCESS ;

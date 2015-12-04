@@ -138,7 +138,7 @@ liste somme_chiffres_paire(liste A){
     return l_vide();
   if(prem(A)%2==0)
     return somme(cons(prem(A),l_vide()),somme_chiffres_paire(reste(A)));
- return somme_chiffres_paire(reste(A));
+  return somme_chiffres_paire(reste(A));
 }
 
 liste somme_chiffres_impaire(liste A){
@@ -167,4 +167,10 @@ bool ppq(liste A, liste B){
     return dernier(A) < dernier(B);
   }
   return longueurR(A) < longueurR(B);
+}
+
+liste max(liste A, liste B){
+  if(ppq(A,B))
+    return B;
+  return A;
 }
