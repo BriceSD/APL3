@@ -1,4 +1,4 @@
-#include "fibonnacci.c"
+#include "fibonacci.c"
 #include <stdlib.h>
 
 void sep (){
@@ -34,14 +34,36 @@ void test_fibonacci(){
   printf("\n");
 }
 
+void afficher_fibonacci_mille(){
+  printf("fibonacci(1000) : ");
+  afficher_grand_entier(fibonacci(1000));
+  printf("\n");
+}
 
-void fibonacci_mille(){
+void afficher_longueur_fibonacci_mille(){
+  printf("Longueur fibonacci(1000) : ");
+  afficher_grand_entier(longeur_grand_entier(fibonacci(1000)));
+  printf("\n");
+}
+
+void afficher_frequence_fibonacci_mille(){
+
+  printf("Frequences fibonacci(1000) : \n");
+  frequence_fibonacci(1000);
 
 }
+
+
 int main(int argc, char *argv[]){
 
   sep();
   test_fibonacci();
+  sep();
+  afficher_fibonacci_mille();
+  sep();
+  afficher_longueur_fibonacci_mille();
+  sep();
+  afficher_frequence_fibonacci_mille();
   sep();
 
 
