@@ -71,7 +71,7 @@ liste fibo(int rang)
         fx1 = temp;
     }
     return fx;
-    
+
 }
 
 //renvoie le nb d'apparitions de x dans la liste l
