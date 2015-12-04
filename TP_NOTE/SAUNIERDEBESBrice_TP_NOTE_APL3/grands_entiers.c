@@ -6,6 +6,7 @@
 /*************************/
 
 #include "liste_entiers.c"
+#include <stdbool.h>
 
 /* question 1*/
 
@@ -146,4 +147,24 @@ liste somme_chiffres_impaire(liste A){
   if(prem(A)%2==1)
     return somme(cons(prem(A),l_vide()),somme_chiffres_impaire(reste(A)));
   return somme_chiffres_impaire(reste(A));
+}
+
+bool ppq(liste A, liste B){
+  if(est_vide(B))
+    return false;
+  if(est_vide(A))
+    return true;
+
+  A = ecriture_canonique_grand_entier(A);
+  B = ecriture_canonique_grand_entier(B);
+
+  if (longueurR(A)==longueurR(B)) {
+    if (dernier(A)==dernier(B)) {
+      if(reste(A)==l_vide() && reste(B)==l_vide())
+        return false;
+      return ppq(sauf_dernier(A), sauf_dernier(B));
+    }
+    return dernier(A) < dernier(B);
+  }
+  return longueurR(A) < longueurR(B);
 }

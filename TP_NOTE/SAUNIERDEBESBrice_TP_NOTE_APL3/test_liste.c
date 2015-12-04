@@ -133,19 +133,39 @@ void somme_chiffres_impaire_factoriel_mille(liste factoriel_mille){
   printf("\n");
 }
 
+void test_ppq(){
+  liste A = entier_vers_grand_entier(24132811);
+  liste B = entier_vers_grand_entier(2213);
+  printf("Test ppq (attendu 0) : %d\n",ppq(A,B));
+  printf("Test ppq (attendu 1) : %d\n",ppq(B,A));
+
+  liste A2 = entier_vers_grand_entier(24132811);
+  liste B2 = entier_vers_grand_entier(24132811);
+  printf("Test ppq (attendu 0) : %d\n",ppq(A2,B2));
+  printf("Test ppq (attendu 0) : %d\n",ppq(B2,A2));
+
+  liste A3 = entier_vers_grand_entier(24132812);
+  liste B3 = entier_vers_grand_entier(24132811);
+  printf("Test ppq (attendu 0) : %d\n",ppq(A3,B3));
+  printf("Test ppq (attendu 1) : %d\n",ppq(B3,A3));
+
+  liste A4 = l_vide();
+  liste B4 = l_vide();
+  printf("Deux listes vides");
+  printf("Test ppq (attendu 0) : %d\n",ppq(A4,B4));
+  printf("Test ppq (attendu 0) : %d\n",ppq(B4,A4));
+}
+
 int main (int argc, char** argv)
 {
 
   sep();
   test_factoriel();
+  /*
   sep();
   test_nombre_chiffre_paire();
   sep();
   liste factoriel_mille = calculer_factoriel_mille();
-  sep();
-  longueur_factoriel_mille(factoriel_mille);
-  sep();
-  longueur_factoriel_mille(factoriel_mille);
   sep();
   longueur_factoriel_mille(factoriel_mille);
   sep();
@@ -156,6 +176,9 @@ int main (int argc, char** argv)
   somme_chiffres_paire_factoriel_mille(factoriel_mille);
   sep();
   somme_chiffres_impaire_factoriel_mille(factoriel_mille);
+  */
+  sep();
+  test_ppq();
   sep();
 
   return EXIT_SUCCESS ;
